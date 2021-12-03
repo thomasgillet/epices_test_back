@@ -1,0 +1,118 @@
+// Place all the styles related to the Slices controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+$base-color: #4B58A0;
+$accent-color: #EC6247;
+
+//////// GLOBAL
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+//////// HEADER
+
+.header {
+	background-color: $base-color;
+	color: white;
+}
+.header a {
+	display: inline-block;
+	padding: 1em;
+	color: white;
+	font-size: 150%;
+	text-decoration: none;
+}
+.header a.active, .header a:hover, .header a:focus {
+	text-decoration: underline 2px;
+}
+.header a.active {
+	text-decoration-color: $accent-color;
+}
+
+//////// TOOLS
+
+.tools {
+	padding: 1em;
+}
+
+input {
+	height: 2rem;
+	border: none;
+	border-radius: 5px;
+	vertical-align: middle;
+}
+input[type=date] {
+	padding: 0 .4em;
+	border: solid 2px $base-color;
+	font-size: 110%;
+}
+input[type=date]:hover, input[type=date]:focus {
+	border-color: $accent-color;
+	outline: none;
+}
+
+input[type=submit] {
+	padding: 0 1em;
+	background-color: $base-color;
+	color: white;
+	font-weight: 600;
+	cursor: pointer;
+}
+input[type=submit]:hover, input[type=submit]:focus {
+	background-color: $accent-color;
+}
+
+//////// CONTENT
+
+.content {
+	display: flex;
+	flex-flow: row-reverse wrap;
+	justify-content: flex-end;
+	padding: 1em;
+}
+
+.help {
+	color: #666;
+}
+.help span {
+	font-size: 220%;
+}
+
+.block {
+	padding-right: 2em;
+}
+.label {
+	padding-bottom: .1em;
+	color: $base-color;
+	border-bottom: solid 2px $accent-color;
+}
+.value {
+	font-size: 170%;
+}
+
+table {
+	border-collapse: collapse;
+}
+table td, table th {
+	padding: .3em 1em;
+	text-align: center;
+}
+table th {
+	color: $base-color;
+	border-bottom: solid 2px $accent-color;
+}
+table td {
+	text-align: right;
+	border-bottom: solid 1px #CCC;
+}
+table tr:last-child td {
+	border: none;
+}

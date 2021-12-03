@@ -1,0 +1,50 @@
+<div class="header">
+	<%= link_to "Show data", slices_index_path, class: "active" %>
+	<%= link_to "Import data", slices_new_import_path %>
+</div>
+
+<div class="tools">
+	<%# Probably need a better date component here, if we want proper styling %>
+	<%= form_tag nil, :method => "GET" do %>
+		<%= date_field_tag :day, @day, min: @day_range.first, max: @day_range.last, required: true %>
+		<%= submit_tag "Show" %>
+	<% end %>
+</div>
+
+<div class="content">
+
+	<% if !@day_range.first %>
+	
+	<div class="help">
+		Import some data first, so we have something to show :) <span>⮵</span>
+	</div>
+	
+	<% elsif !@cube || !@slices %>
+	
+	<div class="help">
+		<span>⮴</span> Select a date above to see some data :)
+	</div>
+	
+	<% else %>
+
+	<div class="block total">
+		<div class="label">Total</div>
+		<div class="value"><%= number_with_delimiter @cube.energy %></div>
+	</div>
+
+	<div class="block">
+		<div class="label">Hourly production</div>
+		<table>
+			<% @slices.each do |slice| %>
+				<tr>
+					<td>#<%= slice.source %></td>
+					<td><%= slice.timestamp.strftime("%F %T") %></td>
+					<td><%= number_with_delimiter slice.energy %></td>
+				</tr>
+			<% end %>
+		</table>
+	</div>
+	
+	<% end %>
+	
+</div>

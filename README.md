@@ -1,4 +1,5 @@
 # Sujet
+
 Une installation photovoltaïque dispose d'un appareil appelé "datalogger" qui nous transmet chaque jour des données sur la production de la veille.
 
 Cette installation photovoltaïque est composée de 2 onduleurs.
@@ -16,8 +17,9 @@ Une interface web simple (pas de mise en forme CSS demandée) qui permet :
 - de voir la production totale d'une journée (au choix de l'utilisateur) pour l'ensemble du système avec le total et la production par heure
 
 # Nous observerons
-- Les modèles créés et leurs relations
-- L'algorithme d'import
+
+- Les modèles créés et leurs relations,
+- L'algorithme d'import,
 - La qualité et l'organisation du code en général.
 
 **Contrainte :** Utiliser RubyOnRails comme framework web.

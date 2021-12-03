@@ -1,0 +1,35 @@
+<div class="header">
+	<%= link_to "Show data", slices_index_path %>
+	<%= link_to "Import data", slices_new_import_path, class: "active" %>
+</div>
+
+<div class="tools">
+	<%# Probably need a better file component here, if we want proper styling %>
+	<%= form_tag({:action => :create_import}, multipart: true) do %>
+		<%= file_field_tag :file, accept:".csv" %>
+		<%= submit_tag "Import" %>
+	<% end %>
+</div>
+
+<div class="content">
+
+	<% if @error %>
+	
+	<div>
+		<p>Oups! Something went wrong :(</p>
+		<p><pre><%= @error %></pre></p>
+	</div>
+	
+	<% else %>
+
+	<div class="help">
+		Please import a CSV file with columns:
+		<ul>
+			<li><pre>identifier</pre></li>
+			<li><pre>datetime (dd/mm/yy HH:mm:ss)</pre></li>
+			<li><pre>energy</pre></li>
+		</ul>
+	</div>
+	<% end %>
+
+</div>
