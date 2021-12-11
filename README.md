@@ -1,27 +1,29 @@
-# Sujet
+# Réponse au test pour Epices Energie
 
-Une installation photovoltaïque dispose d'un appareil appelé "datalogger" qui nous transmet chaque jour des données sur la production de la veille.
+N'ayant aucune notion de Ruby ni de Rails, je suis parti du [Getting started](https://guides.rubyonrails.org/getting_started.html) de Rails.
 
-Cette installation photovoltaïque est composée de 2 onduleurs.
+Développement sous Windows, Ruby 3.0.3 et Rails 6.1.4, avec une base de dev SQLite.
 
-Les données sont transmises en format CSV. Elles contiennent la production horaire de chaque onduleur. *(cf fichiers de production en pièces jointes)*
+J'ai laissé mon fichier TODO que je suis bien loin d'avoir pu terminer.
 
-Le but de l'application est, à partir des fichiers de production, de disposer dans la base de données :
+## Modèle
 
-- des données horaires de chaque onduleur
-- des données consolidées (somme des énergies) sur la journée pour l'ensemble du système
+Par réflexe, je suis parti sur un modèle "table de faits" + "table consolidée" (ou "cube"),
+du fait de mon habitude de travailler avec :
+- des données peu fiables, au format sujet à modifications ou différents pour chaque sous-système source
+- des cubes qui gagnent avec le temps de nouvelles valeurs et/ou dimensions (ici on peut imaginer une consolidation par semaine ou mois ou année, ou bien par source)
 
-Une interface web simple (pas de mise en forme CSS demandée) qui permet :
+Le cube est alors une simple optimisation technique et ne fait pas vraiment parti du modèle.
 
-- d'envoyer un fichier CSV à charger
-- de voir la production totale d'une journée (au choix de l'utilisateur) pour l'ensemble du système avec le total et la production par heure
+En relisant le sujet, et vu que les données sont très propres, peut-être qu'un modèle plus classique
+aurait tout aussi bien fait l'affaire.
 
-# Nous observerons
+Par exemple deux entités `DailySlice` et `HourlySlice`, liées par une relation one-to-many.
+Moins flexible, mais plus clair, et plus adapté aux conventions de Rails (il semble, mais je découvre encore).
 
-- Les modèles créés et leurs relations,
-- L'algorithme d'import,
-- La qualité et l'organisation du code en général.
+En revanche petite attention à porter à la consolidation, il y aura probablement des contraintes de clé étrangère à différer avant insertion et consolidation, sous réserve que la DB le supporte (mais pas de problème si Postgres).
 
-**Contrainte :** Utiliser RubyOnRails comme framework web.
+## Style
 
-**Mettre le code à disposition sur un dépôt git et nous transmettre les moyens d'y accéder.**
+Oui, ce n'était pas demandé, mais j'ai pas pu m'empêcher.
+C'est toujours plus rigolo avec du CSS :)
